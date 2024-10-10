@@ -10,7 +10,7 @@ class Person{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
     private String firstName;
     private String lastName;

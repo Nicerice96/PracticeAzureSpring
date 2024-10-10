@@ -1,53 +1,49 @@
-package com.example.demo;
+    package com.example.demo;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+    import java.util.List;
 
-@Controller
-@RequestMapping("/Person")
-public class PersonController {
+import org.springframework.beans.factory.annotation.Autowired;
 
+    import org.springframework.stereotype.Controller;
+    import org.springframework.ui.Model;
+    import org.springframework.web.bind.annotation.DeleteMapping;
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.PostMapping;
+    import org.springframework.web.bind.annotation.RequestBody;
+    import org.springframework.web.bind.annotation.RequestMapping;
+    import org.springframework.web.bind.annotation.RequestParam;
 
-    private PersonRepository personRepository;
+    @Controller
+    @RequestMapping("/Person")
+    public class PersonController {
 
-    @PostMapping("/add")
-    public String addPerson(@RequestBody Person person){
+        @Autowired
 
-        personRepository.save(person);
+        private PersonRepository personRepository;
 
-        return "added Person";
-    }
+        @PostMapping("/add")
+        public String addPerson(@RequestBody Person person){
 
-    @GetMapping("/getAll")
-    public String getAll(Model model){
-        Iterable<Person> personList = personRepository.findAll();
-        for (Person person : personList) {
-            model.addAttribute("firstName", person.getFirstName());
-            model.addAttribute("lastName", person.getLastName());
-            model.addAttribute("weight", person.getWeight());
-            model.addAttribute("height", person.getHeight());
-        }
-        return "template";
-    }
-
-
-    @DeleteMapping("/del")
-    public String delPerson(@RequestParam Long id){
-        Iterable<Person> iteratePerson = personRepository.findAll();
+            personRepository.save(person);
+            return "Added: " + person.toString();
         
-        for (Person person : iteratePerson){
-            if (person.getLongId() == id){
-                personRepository.deleteById(id);
-                return "Person: " + id + "was deleted";
-            }
         }
-        return "Person not found";
 
+        @GetMapping("/get")
+        public String getAll(Model model){
+            List<Person> personList = (List<Person>)personRepository.findAll();
+            model.addAttribute("personList", personList);
+            return "template";
+        }
+
+
+        @DeleteMapping("/del")
+        public String delPerson(@RequestParam Long id){
+            if(personRepository.existsById(id)){
+                personRepository.deleteById(id);
+                return "Person with ID " + id + " was deleted";
+            }
+            return "Person not found";
+
+        }
     }
-}

@@ -1,15 +1,16 @@
-<!DOCTYPE <!DOCTYPE html>
-
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Person App</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <p>Person</p>
-    </body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Persons</title> <!-- Add a title -->
+</head>
+<body>
+    <h1>All Persons</h1>
+            <tr th:each="person : ${personList}">
+                <td th:text="${person.id}">1</td>
+                <td th:text="${person.firstName}">First Name</td>
+                <td th:text="${person.lastName}">Last Name</td>
+                <td th:text="${person.weight}">Weight</td>
+                <td th:text="${person.height}">Height</td>
+            </tr>
+</body>
 </html>
