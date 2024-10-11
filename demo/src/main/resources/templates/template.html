@@ -5,11 +5,11 @@
         <link rel="stylesheet" type="text/css" th:href="@{/stylesheet.css}" />
     </head>
     <body>
-        <div class= "header">
-        <h1 class = "table_title">All Persons</h1>
+        <div class="header">
+            <h1 class="table_title">All Persons</h1>
         </div>
         <div class="main">
-            <table>
+            <table class = "person_table">
                 <tr th:each="person : ${personList}">
                     <td th:text="${person.id}">1</td>
                     <td th:text="${person.firstName}">First Name</td>
