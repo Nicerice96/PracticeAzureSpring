@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>All Persons</title> <!-- Add a title -->
-</head>
-<body>
-    <h1>All Persons</h1>
-            <tr th:each="person : ${personList}">
-                <td th:text="${person.id}">1</td>
-                <td th:text="${person.firstName}">First Name</td>
-                <td th:text="${person.lastName}">Last Name</td>
-                <td th:text="${person.weight}">Weight</td>
-                <td th:text="${person.height}">Height</td>
-            </tr>
-</body>
+    <head>
+        <title>All Persons</title> <!-- Add a title -->
+        <link rel="stylesheet" type="text/css" th:href="@{/stylesheet.css}" />
+    </head>
+    <body>
+        <div class= "header">
+        <h1 class = "table_title">All Persons</h1>
+        </div>
+        <div class="main">
+            <table>
+                <tr th:each="person : ${personList}">
+                    <td th:text="${person.id}">1</td>
+                    <td th:text="${person.firstName}">First Name</td>
+                    <td th:text="${person.lastName}">Last Name</td>
+                    <td th:text="${person.weight}">Weight</td>
+                    <td th:text="${person.height}">Height</td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>
