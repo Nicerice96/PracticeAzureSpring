@@ -18,7 +18,7 @@
                 <input type = "number" id="height" placeholder="Height" required step=0.01>
                 <button type="submit">Add Person</button> 
             </form>
-            <table class = "person_table" id= "personList">
+            <table class = "person_table">
                 <tr th:each="person : ${personList}">
                     <td th:text="${person.id}">1</td>
                     <td th:text="${person.firstName}">First Name</td>

@@ -4,7 +4,7 @@ $(document).ready(function(){
             console.log(data);
 
             data.forEach(function(person){
-                $("#personList").append(
+                $(".person_table").append(
                     `<tr>
                         <td>${person.id}</td>
                         <td>${person.firstName}</td>
