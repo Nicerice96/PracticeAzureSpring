@@ -1,4 +1,6 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "automatic",
+    "appService.defaultWebAppToDeploy": "/subscriptions/aa9c00e1-1346-4a20-88b3-0f28e2e8a305/resourceGroups/firstResourceGroup/providers/Microsoft.Web/sites/firstWebsite",
+    "appService.deploySubpath": "demo/target/demo-0.0.1-SNAPSHOT.jar"
 }
