@@ -3,8 +3,8 @@
     import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-    import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
     import org.springframework.ui.Model;
     import org.springframework.web.bind.annotation.DeleteMapping;
     import org.springframework.web.bind.annotation.GetMapping;
@@ -22,18 +22,25 @@ import org.springframework.beans.factory.annotation.Autowired;
         private PersonRepository personRepository;
 
         @PostMapping("/add")
-        public String addPerson(@RequestBody Person person){
+        public ResponseEntity<String> addPerson(@RequestBody Person person){
 
             personRepository.save(person);
-            return "Added: " + person.toString();
+            return ResponseEntity.ok("Added Person Successfully");
         
         }
 
+        @GetMapping("/view")
+        public String getView() {
+            return "template";
+        }
+        
+
         @GetMapping("/get")
-        public String getAll(Model model){
+        public ResponseEntity<List<Person>> getAll(Model model){
             List<Person> personList = (List<Person>)personRepository.findAll();
             model.addAttribute("personList", personList);
-            return "template";
+    
+            return ResponseEntity.ok(personList);
         }
 
 

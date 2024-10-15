@@ -5,29 +5,26 @@ body{
 .header{
     justify-content: center;
     align-items: center;
-    background-color: green;
+    background-color:aliceblue;
     margin: 0;
     display: flex;
     padding: 0;
 }
 
 .table_title{
-    color: aliceblue;
+    color:black;
     margin: 0;
 }
 
 .main{
     justify-content: center;
     align-items: center;
-    background-color: lightgreen;
+    background-color:aliceblue;
     height: 250px;
 }
 
 .person_table{
-    justify-content: center;
-    align-items: center;
     color: black;
-    width: 100%;
 }
 
 td{
