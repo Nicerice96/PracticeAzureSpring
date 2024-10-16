@@ -12,10 +12,8 @@ import org.springframework.stereotype.Controller;
     import org.springframework.web.bind.annotation.RequestBody;
     import org.springframework.web.bind.annotation.RequestMapping;
     import org.springframework.web.bind.annotation.RequestParam;
-    import org.springframework.web.servlet.view.RedirectView;
-
     @Controller
-    @RequestMapping("/Person")
+    @RequestMapping("/")
     public class PersonController {
 
         @Autowired
@@ -23,8 +21,8 @@ import org.springframework.stereotype.Controller;
         private PersonRepository personRepository;
 
         @GetMapping("/")
-        public RedirectView redirectToPersonView() {
-            return new RedirectView("Person/view");
+        public String home() {
+            return "template";
         }
 
         @PostMapping("/add")
@@ -35,11 +33,7 @@ import org.springframework.stereotype.Controller;
         
         }
 
-        @GetMapping("/view")
-        public String getView() {
-            return "template";
-        }
-        
+
 
         @GetMapping("/get")
         public ResponseEntity<List<Person>> getAll(Model model){
